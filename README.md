@@ -1,4 +1,4 @@
-#### para rodar > https://zednaked.github.io/2djoust/
+#### para jogar acesse > https://zednaked.github.io/2djoust/
 
 
 ## Bate-papo sobre o projeto
