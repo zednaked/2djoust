@@ -3,6 +3,7 @@ extends CharacterBody2D
 signal died
 
 @export var max_health = 100
+@export var drop : PackedScene
 var health
 
 const SPEED = 120.0
@@ -21,6 +22,7 @@ var death_effect_scene = preload("res://scenes/effects/death_effect.tscn")
 @onready var hitbox_shape = $Hitbox/CollisionShape2D # Referência para a CollisionShape2D
 @onready var health_bar = $EnemyHealthBar
 
+
 var player = null
 var hit_targets_in_swing = []
 
@@ -31,6 +33,7 @@ var can_attack = true
 
 
 func _ready():
+	randomize()
 	health = max_health
 	health_bar.max_value = max_health
 	health_bar.value = health
@@ -140,8 +143,17 @@ func take_damage(amount):
 	
 	if health <= 0:
 		died.emit()
+		
+		
+		if randf() < 0.5:
+			var drop = drop.instantiate()
+			get_parent().add_child(drop)
+			drop.global_position = self.global_position
+		
 		var death_effect = death_effect_scene.instantiate()
+		
 		get_parent().add_child(death_effect)
+		
 		death_effect.global_position = global_position
 		
 		current_state = State.DEATH

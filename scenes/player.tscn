@@ -27,7 +27,7 @@ shape = SubResource("RectangleShape2D_12345")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 8
-collision_mask = 128
+collision_mask = 144
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 y_sort_enabled = true

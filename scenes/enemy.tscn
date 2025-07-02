@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8hfjmvwb01gh"]
+[gd_scene load_steps=8 format=3 uid="uid://b8hfjmvwb01gh"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_abcde"]
 [ext_resource type="PackedScene" uid="uid://bt06b4dg3cd3b" path="res://assets/sprites/Orc.aseprite" id="2_fghij"]
+[ext_resource type="PackedScene" uid="uid://cbba87654321" path="res://scenes/items/health_pack.tscn" id="2_qtqhn"]
 [ext_resource type="PackedScene" uid="uid://klmno123456" path="res://scenes/components/enemy_health_bar.tscn" id="3_xyz"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67890"]
@@ -11,7 +12,7 @@ size = Vector2(26.6, 27.2)
 size = Vector2(24.8, 27.3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
-size = Vector2(54.4, 70.8)
+size = Vector2(37.2, 37)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 texture_filter = 1
@@ -20,6 +21,7 @@ collision_mask = 7
 platform_floor_layers = 4294967293
 platform_wall_layers = 2
 script = ExtResource("1_abcde")
+drop = ExtResource("2_qtqhn")
 
 [node name="Orc" parent="." instance=ExtResource("2_fghij")]
 animation = &"idle"
@@ -45,7 +47,8 @@ collision_layer = 128
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" groups=["enemy_attack"]]
-position = Vector2(3.6, -0.799999)
+position = Vector2(4, 0.499997)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hitbox")
 
 [node name="EnemyHealthBar" parent="." instance=ExtResource("3_xyz")]

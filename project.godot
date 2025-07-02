@@ -13,6 +13,7 @@ config_version=5
 config/name="2djoust"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/bg_color=Color(0.321569, 0.352941, 0.321569, 1)
 boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
@@ -52,4 +53,6 @@ common/physics_interpolation=true
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/default_filters/anisotropic_filtering_level=0
-environment/defaults/default_clear_color=Color(0.678431, 0.847059, 0.658824, 1)
+environment/defaults/default_clear_color=Color(0.698039, 0.698039, 0.498039, 1)
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

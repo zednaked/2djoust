@@ -32,6 +32,7 @@ var can_combo = false
 var combo_reset_timer = null
 
 func _ready():
+	
 	health = max_health
 	$Hurtbox.connect("area_entered", Callable(self, "_on_Hurtbox_area_entered"))
 	animated_sprite.connect("animation_finished", Callable(self, "_on_animation_finished"))
@@ -164,7 +165,9 @@ func heal(amount):
 
 func _on_Hurtbox_area_entered(area):
 	if area.is_in_group("pickup"):
+		
 		if area.name == "HealthPack":
+			print_debug("pickup")
 			heal(HEAL_AMOUNT)
 			area.queue_free()
 

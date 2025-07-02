@@ -14,3 +14,4 @@ res://scripts/enemy.gd
 res://scripts/ui.gd
 res://scripts/spawner.gd
 res://TODO.md
+res://scenes/items/health_pack.tscn
