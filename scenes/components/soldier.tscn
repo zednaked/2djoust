@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxbs5dt20yed5"]
+
+[ext_resource type="PackedScene" uid="uid://c4vp5f3wbhpwt" path="res://assets/sprites/Soldier.aseprite" id="1_xwbq7"]
+
+[node name="Soldier" instance=ExtResource("1_xwbq7")]
+animation = &"Attack01"

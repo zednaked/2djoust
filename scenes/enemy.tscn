@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8hfjmvwb01gh"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_abcde"]
+[ext_resource type="PackedScene" uid="uid://bt06b4dg3cd3b" path="res://assets/sprites/Orc.aseprite" id="2_fghij"]
+[ext_resource type="PackedScene" uid="uid://klmno123456" path="res://scenes/components/enemy_health_bar.tscn" id="3_xyz"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_67890"]
+size = Vector2(26.6, 27.2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hurtbox"]
+size = Vector2(24.8, 27.3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(54.4, 70.8)
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+texture_filter = 1
+scale = Vector2(5, 5)
+collision_mask = 7
+platform_floor_layers = 4294967293
+platform_wall_layers = 2
+script = ExtResource("1_abcde")
+
+[node name="Orc" parent="." instance=ExtResource("2_fghij")]
+animation = &"idle"
+frame = 11
+frame_progress = 1.0
+speed_scale = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.3, 0)
+shape = SubResource("RectangleShape2D_67890")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+y_sort_enabled = true
+position = Vector2(3.6, 0.25)
+shape = SubResource("RectangleShape2D_hurtbox")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["enemy_attack"]]
+collision_layer = 128
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" groups=["enemy_attack"]]
+position = Vector2(3.6, -0.799999)
+shape = SubResource("RectangleShape2D_hitbox")
+
+[node name="EnemyHealthBar" parent="." instance=ExtResource("3_xyz")]
+offset_left = -4.8
+offset_top = -10.6
+offset_right = 12.2
+offset_bottom = -8.6

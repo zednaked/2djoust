@@ -1,0 +1,10 @@
+Button
+Timer
+Camera2D
+Node
+Node2D
+NavigationRegion2D
+XROrigin3D
+CollisionShape2D
+Sprite2D
+TextureRect

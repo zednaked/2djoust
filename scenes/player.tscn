@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5w5a3b2kvx2v"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_abcde"]
+[ext_resource type="PackedScene" uid="uid://dxbs5dt20yed5" path="res://scenes/components/soldier.tscn" id="2_4vw0s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12345"]
+size = Vector2(14, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hurtbox"]
+size = Vector2(18, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(28, 30)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_abcde")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_12345")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+y_sort_enabled = true
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_hurtbox")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["player_attack"]]
+collision_layer = 128
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+y_sort_enabled = true
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_hitbox")
+disabled = true
+
+[node name="Soldier" parent="." instance=ExtResource("2_4vw0s")]
+speed_scale = 1.8
+
+[node name="DashTrailTimer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.8, 0.8)

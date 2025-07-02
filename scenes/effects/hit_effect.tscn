@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://b25jqcanfmw8a"]
+
+[ext_resource type="Script" path="res://scenes/effects/hit_effect.gd" id="1_abcde"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+spread = 180.0
+flatness = 0.124
+initial_velocity_min = 80.0
+initial_velocity_max = 120.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 69.68
+orbit_velocity_min = 0.338
+orbit_velocity_max = 0.338
+gravity = Vector3(0, -1, 0)
+linear_accel_min = 15.05
+linear_accel_max = 15.05
+scale_min = 5.0
+scale_max = 5.0
+color = Color(0.8, 0.1, 0.1, 1)
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+anim_speed_max = 1.03
+
+[node name="HitEffect" type="GPUParticles2D"]
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_1")
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.9
+script = ExtResource("1_abcde")

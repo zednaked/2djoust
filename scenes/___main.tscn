@@ -1,0 +1,322 @@
+[gd_scene load_steps=9 format=3 uid="uid://bsemcq0amy7ej"]
+
+[ext_resource type="PackedScene" uid="uid://b5w5a3b2kvx2v" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="Texture2D" uid="uid://dod3krvm0ax3s" path="res://assets/sprites/environment.png" id="3_xj1jn"]
+[ext_resource type="PackedScene" uid="uid://dajc7vj3w2k1q" path="res://scenes/spawner.tscn" id="4_wj1kx"]
+[ext_resource type="PackedScene" uid="uid://dm6ihpqs40o62" path="res://scenes/ui.tscn" id="5_rbu57"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="6_abcde"]
+[ext_resource type="PackedScene" uid="uid://b8hfjmvwb01gh" path="res://scenes/enemy.tscn" id="7_xyz"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s12sr"]
+size = Vector2(89.0637, 27.1064)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46brk"]
+size = Vector2(103.779, 37.9489)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wkdg0"]
+size = Vector2(10.4322, 20.3154)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_12345"]
+vertices = PackedVector2Array()
+polygons = []
+outlines = []
+source_geometry_group_name = &"navigation_geometry"
+agent_radius = 10.0
+
+
+[node name="Main" type="Node2D"]
+y_sort_enabled = true
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_12345")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("6_abcde")
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+texture_filter = 1
+position = Vector2(984, 384)
+scale = Vector2(5, 5)
+
+[node name="UI" parent="." instance=ExtResource("5_rbu57")]
+
+[node name="spawners" type="Node" parent="."]
+
+[node name="Spawner" parent="spawners" instance=ExtResource("4_wj1kx")]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(978, -62)
+enemy_scene = ExtResource("7_xyz")
+
+[node name="Spawner2" parent="spawners" instance=ExtResource("4_wj1kx")]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(169, 702)
+enemy_scene = ExtResource("7_xyz")
+
+[node name="background" type="Node" parent="."]
+
+[node name="pedra" type="StaticBody2D" parent="background" groups=["navigation_geometry"]]
+y_sort_enabled = true
+position = Vector2(145, 147)
+scale = Vector2(1.29121, 1.29121)
+disable_mode = 1
+collision_layer = 2
+collision_mask = 32
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="background/pedra"]
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("3_xj1jn")
+region_enabled = true
+region_rect = Rect2(391, 161, 115, 91)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/pedra"]
+position = Vector2(1.93616, 18.9744)
+shape = SubResource("RectangleShape2D_s12sr")
+
+[node name="pedra4" type="StaticBody2D" parent="background" groups=["navigation_geometry"]]
+y_sort_enabled = true
+position = Vector2(145, 147)
+scale = Vector2(1.29121, 1.29121)
+collision_layer = 2
+collision_mask = 32
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="background/pedra4"]
+texture_filter = 1
+texture = ExtResource("3_xj1jn")
+region_enabled = true
+region_rect = Rect2(391, 161, 115, 91)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/pedra4"]
+position = Vector2(1.93616, 18.9744)
+shape = SubResource("RectangleShape2D_s12sr")
+
+[node name="pedra3" type="StaticBody2D" parent="background" groups=["navigation_geometry"]]
+y_sort_enabled = true
+position = Vector2(1627, 76)
+scale = Vector2(1.29121, 1.29121)
+collision_layer = 2
+collision_mask = 32
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="background/pedra3"]
+texture_filter = 1
+texture = ExtResource("3_xj1jn")
+region_enabled = true
+region_rect = Rect2(391, 161, 115, 91)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/pedra3"]
+position = Vector2(1.93616, 18.9744)
+shape = SubResource("RectangleShape2D_s12sr")
+
+[node name="pedra2" type="StaticBody2D" parent="background" groups=["navigation_geometry"]]
+y_sort_enabled = true
+position = Vector2(1852, 390)
+scale = Vector2(1.29121, 1.29121)
+collision_layer = 2
+collision_mask = 32
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="background/pedra2"]
+texture_filter = 1
+texture = ExtResource("3_xj1jn")
+region_enabled = true
+region_rect = Rect2(384, 264, 127, 116)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/pedra2"]
+position = Vector2(-1.54907, 29.817)
+shape = SubResource("RectangleShape2D_46brk")
+metadata/_edit_group_ = true
+
+[node name="pedra5" type="StaticBody2D" parent="background" groups=["navigation_geometry"]]
+y_sort_enabled = true
+position = Vector2(1824, 820)
+scale = Vector2(1.29121, 1.29121)
+collision_layer = 2
+collision_mask = 32
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="background/pedra5"]
+texture_filter = 1
+texture = ExtResource("3_xj1jn")
+region_enabled = true
+region_rect = Rect2(384, 264, 127, 116)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/pedra5"]
+position = Vector2(-1.54907, 29.817)
+shape = SubResource("RectangleShape2D_46brk")
+metadata/_edit_group_ = true
+
+[node name="pedra6" type="StaticBody2D" parent="background" groups=["navigation_geometry"]]
+y_sort_enabled = true
+position = Vector2(545, 124)
+scale = Vector2(1.29121, 1.29121)
+collision_layer = 2
+collision_mask = 32
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="background/pedra6"]
+texture_filter = 1
+texture = ExtResource("3_xj1jn")
+region_enabled = true
+region_rect = Rect2(384, 264, 127, 116)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/pedra6"]
+position = Vector2(-1.54907, 29.817)
+shape = SubResource("RectangleShape2D_46brk")
+metadata/_edit_group_ = true
+
+[node name="pedra7" type="StaticBody2D" parent="background" groups=["navigation_geometry"]]
+y_sort_enabled = true
+position = Vector2(1091, 563)
+scale = Vector2(1.29121, 1.29121)
+collision_layer = 2
+collision_mask = 32
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="background/pedra7"]
+texture_filter = 1
+texture = ExtResource("3_xj1jn")
+region_enabled = true
+region_rect = Rect2(384, 264, 127, 116)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/pedra7"]
+position = Vector2(-1.54907, 29.817)
+shape = SubResource("RectangleShape2D_46brk")
+metadata/_edit_group_ = true
+
+[node name="arvore" type="StaticBody2D" parent="background" groups=["navigation_geometry"]]
+y_sort_enabled = true
+position = Vector2(577, 433)
+scale = Vector2(1.82128, 1.82128)
+collision_layer = 2
+collision_mask = 32
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="background/arvore"]
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("3_xj1jn")
+region_enabled = true
+region_rect = Rect2(285, 268, 74, 112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/arvore"]
+position = Vector2(-2.47079, 45.8469)
+shape = SubResource("RectangleShape2D_wkdg0")
+
+[node name="arvore2" type="StaticBody2D" parent="background" groups=["navigation_geometry"]]
+y_sort_enabled = true
+position = Vector2(1329, 671)
+scale = Vector2(1.82128, 1.82128)
+collision_layer = 2
+collision_mask = 32
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="background/arvore2"]
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("3_xj1jn")
+region_enabled = true
+region_rect = Rect2(285, 268, 74, 112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/arvore2"]
+position = Vector2(-2.47079, 45.8469)
+shape = SubResource("RectangleShape2D_wkdg0")
+
+[node name="arvore5" type="StaticBody2D" parent="background" groups=["navigation_geometry"]]
+y_sort_enabled = true
+position = Vector2(438, 691)
+scale = Vector2(1.82128, 1.82128)
+collision_layer = 2
+collision_mask = 32
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="background/arvore5"]
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("3_xj1jn")
+region_enabled = true
+region_rect = Rect2(285, 268, 74, 112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/arvore5"]
+position = Vector2(-2.47079, 45.8469)
+shape = SubResource("RectangleShape2D_wkdg0")
+
+[node name="arvore6" type="StaticBody2D" parent="background"]
+y_sort_enabled = true
+position = Vector2(14, 592)
+scale = Vector2(1.82128, 1.82128)
+collision_layer = 2
+collision_mask = 32
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="background/arvore6"]
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("3_xj1jn")
+region_enabled = true
+region_rect = Rect2(285, 268, 74, 112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/arvore6"]
+position = Vector2(-2.47079, 45.8469)
+shape = SubResource("RectangleShape2D_wkdg0")
+
+[node name="arvore7" type="StaticBody2D" parent="background" groups=["navigation_geometry"]]
+y_sort_enabled = true
+position = Vector2(14, 592)
+scale = Vector2(1.82128, 1.82128)
+collision_layer = 2
+collision_mask = 32
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="background/arvore7"]
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("3_xj1jn")
+region_enabled = true
+region_rect = Rect2(285, 268, 74, 112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/arvore7"]
+position = Vector2(-2.47079, 45.8469)
+shape = SubResource("RectangleShape2D_wkdg0")
+
+[node name="arvore3" type="StaticBody2D" parent="background" groups=["navigation_geometry"]]
+y_sort_enabled = true
+position = Vector2(1253, 196)
+scale = Vector2(1.82128, 1.82128)
+collision_layer = 2
+collision_mask = 32
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="background/arvore3"]
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("3_xj1jn")
+region_enabled = true
+region_rect = Rect2(285, 268, 74, 112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/arvore3"]
+position = Vector2(-2.47079, 45.8469)
+shape = SubResource("RectangleShape2D_wkdg0")
+
+[node name="arvore4" type="StaticBody2D" parent="background" groups=["navigation_geometry"]]
+y_sort_enabled = true
+position = Vector2(1253, 196)
+scale = Vector2(1.82128, 1.82128)
+collision_layer = 2
+collision_mask = 32
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="background/arvore4"]
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("3_xj1jn")
+region_enabled = true
+region_rect = Rect2(285, 268, 74, 112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/arvore4"]
+position = Vector2(-2.47079, 45.8469)
+shape = SubResource("RectangleShape2D_wkdg0")

@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://dm6ihpqs40o62"]
+
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_abcde"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]
+bg_color = Color(0.1, 0.1, 0.1, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0.8)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2"]
+bg_color = Color(0.2, 0.8, 0.2, 0.9)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_abcde")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 320.0
+offset_bottom = 45.0
+theme_override_styles/background = SubResource("StyleBoxFlat_1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2")
+value = 50.0
+show_percentage = false
+
+[node name="ScoreInfoLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 20.0
+offset_right = 100.0
+offset_bottom = 46.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -89.0
+offset_top = 303.0
+offset_right = 111.0
+offset_bottom = 329.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 16
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1

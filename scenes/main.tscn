@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://ct57sc5832wcp"]
+
+[ext_resource type="PackedScene" uid="uid://b5w5a3b2kvx2v" path="res://scenes/player.tscn" id="1_ee76t"]
+[ext_resource type="PackedScene" uid="uid://b8hfjmvwb01gh" path="res://scenes/enemy.tscn" id="2_3ahhb"]
+[ext_resource type="Script" path="res://scripts/spawner.gd" id="2_no2fh"]
+[ext_resource type="PackedScene" uid="uid://dfwtq71eyuq7c" path="res://scenes/background.tscn" id="3_1kvsf"]
+[ext_resource type="PackedScene" uid="uid://dm6ihpqs40o62" path="res://scenes/ui.tscn" id="5_2y3dc"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ee76t")]
+texture_filter = 1
+position = Vector2(298, 230)
+scale = Vector2(5, 5)
+collision_mask = 2
+
+[node name="spawner" type="Node2D" parent="." groups=["spawners"]]
+position = Vector2(496, 707)
+script = ExtResource("2_no2fh")
+enemy_scene = ExtResource("2_3ahhb")
+
+[node name="Timer" type="Timer" parent="spawner"]
+wait_time = 10.0
+autostart = true
+
+[node name="spawner5" type="Node2D" parent="." groups=["spawners"]]
+position = Vector2(1662, 1017)
+script = ExtResource("2_no2fh")
+enemy_scene = ExtResource("2_3ahhb")
+
+[node name="Timer" type="Timer" parent="spawner5"]
+wait_time = 6.0
+autostart = true
+
+[node name="spawner6" type="Node2D" parent="." groups=["spawners"]]
+position = Vector2(1370, -159)
+script = ExtResource("2_no2fh")
+enemy_scene = ExtResource("2_3ahhb")
+
+[node name="Timer" type="Timer" parent="spawner6"]
+wait_time = 10.0
+autostart = true
+
+[node name="spawner3" type="Node2D" parent="." groups=["spawners"]]
+position = Vector2(2176, 463)
+script = ExtResource("2_no2fh")
+enemy_scene = ExtResource("2_3ahhb")
+
+[node name="Timer" type="Timer" parent="spawner3"]
+wait_time = 8.0
+autostart = true
+
+[node name="spawner4" type="Node2D" parent="." groups=["spawners"]]
+position = Vector2(1304, 135)
+script = ExtResource("2_no2fh")
+enemy_scene = ExtResource("2_3ahhb")
+
+[node name="Timer" type="Timer" parent="spawner4"]
+wait_time = 15.0
+autostart = true
+
+[node name="spawner2" type="Node2D" parent="." groups=["spawners"]]
+position = Vector2(-812, 469)
+script = ExtResource("2_no2fh")
+enemy_scene = ExtResource("2_3ahhb")
+
+[node name="Timer" type="Timer" parent="spawner2"]
+wait_time = 5.0
+autostart = true
+
+[node name="background" parent="." instance=ExtResource("3_1kvsf")]
+
+[node name="UI" parent="." instance=ExtResource("5_2y3dc")]
