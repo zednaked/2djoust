@@ -146,7 +146,7 @@ func take_damage(amount):
 		
 		current_state = State.DEATH
 		animated_sprite.play("Death")
-		health_bar.visible = false
+		health_bar.visible = false # usar o mesmo que o inmigo
 		$CollisionShape2D.disabled = true
 		$Hurtbox/CollisionShape2D.disabled = true
 		hitbox_shape.disabled = true

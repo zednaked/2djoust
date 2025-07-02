@@ -12,3 +12,5 @@ res://Main.tscn
 res://scripts/player.gd
 res://scripts/enemy.gd
 res://scripts/ui.gd
+res://scripts/spawner.gd
+res://TODO.md
