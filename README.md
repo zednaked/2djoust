@@ -1,3 +1,6 @@
+#### para jogar acesse > https://zednaked.github.io/2djoust/
+
+
 ## Bate-papo sobre o projeto
 
 ### Como foi o processo de criação?
@@ -5,14 +8,14 @@
 Tudo começou com os assets. Olhando para eles, a ideia de um jogo top-down, com uma pegada meio *Vampire Survivors*, pareceu a mais promissora. A sugestão inicial era ter um pulo, mas acabei trocando por um sistema de dash e combos que combinou mais com a ação.
 
 O desenvolvimento foi passo a passo:
-1.  **Protótipo:** Criei uma arena bem simples, só com o jogador e um inimigo, para focar em deixar a jogabilidade principal (IA, state machine, knockback, dash) divertida.
+1.  **Protótipo:** Criei uma arena bem simples, só com o jogador e um inimigo, para focar em deixar a jogabilidade principal - IA, state machine, knockback, dash - divertida.
 2.  **Expansão:** Quando a base ficou legal, adicionei os spawners para os inimigos surgirem em ondas e construí o cenário definitivo.
 3.  **UI e Efeitos:** Implementei a interface com vida e score.
 4.  **Polimento:** Para dar um charme, adicionei uma tela de início, de fim de jogo e vários efeitos de partículas.
 
 ### E o que vem depois? Quais os próximos passos?
 
-Se fosse continuar, os próximos passos seriam:
+Para continuar, algumas possibilides de próximos passos:
 - Adicionar mais tipos de inimigos, cada um com um comportamento diferente.
 - Colocar efeitos sonoros e uma trilha sonora.
 - Quem sabe um modo multiplayer
@@ -21,8 +24,6 @@ Se fosse continuar, os próximos passos seriam:
 ### Gostou ou quer trocar uma ideia?
 
 Pode me chamar no e-mail: zednaked@gmail.com 
-
-
 
 
 # 2D Joust - Documentação do Projeto
