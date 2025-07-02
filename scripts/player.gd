@@ -8,6 +8,9 @@ const DASH_SPEED = 700.0
 const DASH_DURATION = 0.40
 const ATTACK_DAMAGE = 50
 const HEAL_AMOUNT = 25
+const DOUBLE_TAP_DELAY = 0.2
+var dash_timer = 0.0
+var combo_counter = 0
 
 @export var max_health = 100
 var health
@@ -18,14 +21,13 @@ var health
 enum State { IDLE, WALK, DASH, ATTACK, HURT, DEATH }
 var current_state = State.IDLE
 
-var dash_timer = 0.0
 var dash_direction = Vector2.ZERO
-const DOUBLE_TAP_DELAY = 0.2
+
 var last_tap_time = {"left": 0.0, "right": 0.0, "up": 0.0, "down": 0.0}
 var actions = {"left": "ui_left", "right": "ui_right", "up": "ui_up", "down": "ui_down"}
 var directions = {"left": Vector2.LEFT, "right": Vector2.RIGHT, "up": Vector2.UP, "down": Vector2.DOWN}
 
-var combo_counter = 0
+
 var can_combo = false
 var combo_reset_timer = null
 
@@ -61,7 +63,8 @@ func _physics_process(delta):
 				start_attack()
 
 	move_and_slide()
-
+	
+#arrasta a rapaise
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision and collision.get_collider().is_in_group("enemy"):

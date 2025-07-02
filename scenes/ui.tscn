@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dm6ihpqs40o62"]
+[gd_scene load_steps=6 format=3 uid="uid://dm6ihpqs40o62"]
 
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_abcde"]
 
@@ -21,8 +21,12 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
+[sub_resource type="LabelSettings" id="LabelSettings_nd166"]
+font_size = 19
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_xth45"]
-font_size = 40
+font_size = 80
 font_color = Color(0, 0, 0, 1)
 
 [node name="UI" type="CanvasLayer"]
@@ -52,14 +56,36 @@ text = "Score: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Tip" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -198.0
+offset_top = -292.0
+offset_right = 187.0
+offset_bottom = -115.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "Use as setas para jogar
+Espaço ataca 
+Duas vezes uma seta para dash
+Combine dash com ataques para combos"
+label_settings = SubResource("LabelSettings_nd166")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [node name="TitleLabel" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -95.0
-offset_top = 252.0
-offset_right = 105.0
-offset_bottom = 307.0
+offset_left = -173.0
+offset_top = 141.0
+offset_right = 188.0
+offset_bottom = 251.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 20
 text = "2D JOUST"

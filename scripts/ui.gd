@@ -9,19 +9,20 @@ var current_state = GameState.START_MENU
 @onready var restart_button = $RestartButton
 @onready var title_label = $TitleLabel
 @onready var start_button = $StartButton
+@onready var tip_label = $Tip
 
 var score = 0
 var player = null
 
 func _ready():
-	# Conecta os botões às suas funções
+	
 	start_button.connect("pressed", _on_StartButton_pressed)
 	restart_button.connect("pressed", _on_RestartButton_pressed)
 	
-	# Conecta-se à árvore para detectar nós adicionados
+	
 	get_tree().node_added.connect(_on_node_added)
 	
-	# Procura por nós que já existem
+	
 	for node in get_tree().get_nodes_in_group("player"):
 		_on_node_added(node)
 	for node in get_tree().get_nodes_in_group("enemy"):
@@ -34,25 +35,30 @@ func change_state(new_state):
 	update_ui_for_state()
 
 func update_ui_for_state():
-	# Visibilidade dos elementos da UI
+	
+	#hack para inversao       se  start_menu  true, senao false
 	title_label.visible = (current_state == GameState.START_MENU)
 	start_button.visible = (current_state == GameState.START_MENU)
 	game_over_label.visible = (current_state == GameState.GAME_OVER)
 	restart_button.visible = (current_state == GameState.GAME_OVER)
 	health_bar.visible = (current_state == GameState.PLAYING)
 	score_label.visible = (current_state == GameState.PLAYING)
+	tip_label.visible = (current_state == GameState.START_MENU)
 	
-	# Visibilidade dos elementos do jogo
+	
 	if is_instance_valid(player):
+		#                se for playing true senao false
 		player.visible = (current_state == GameState.PLAYING)
-		# Impede o jogador de se mover e ser atingido fora do estado de jogo
+	
 		player.set_process(current_state == GameState.PLAYING)
 		player.set_physics_process(current_state == GameState.PLAYING)
 		if player.get_node_or_null("CollisionShape2D"):
+														# hack invertido
 			player.get_node("CollisionShape2D").disabled = (current_state != GameState.PLAYING)
 
 	# Ativa/desativa os spawners
 	for spawner in get_tree().get_nodes_in_group("spawners"):
+		#                 se  playing  fica visivel 
 		spawner.visible = (current_state == GameState.PLAYING)
 		if current_state == GameState.PLAYING:
 			spawner.start_spawning()
@@ -74,7 +80,7 @@ func _on_node_added(node):
 
 	if node.is_in_group("enemy"):
 		node.died.connect(Callable(self, "_on_enemy_died"))
-		# Garante que os inimigos comecem invisíveis
+	
 		node.visible = (current_state == GameState.PLAYING)
 
 func _on_enemy_died():

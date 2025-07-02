@@ -1,11 +1,14 @@
+res://Player.tscn
 res://scenes/enemy.tscn
 res://scenes/spawner.tscn
-res://scenes/main.tscn
 res://scenes/background.tscn
 res://scenes/effects/hit_effect.tscn
 res://scenes/effects/death_effect.tscn
 res://scenes/effects/dash_trail.tscn
 res://scenes/player.tscn
 res://scenes/ui.tscn
+res://scenes/main.tscn
 res://Main.tscn
-res://README.md
+res://scripts/player.gd
+res://scripts/enemy.gd
+res://scripts/ui.gd

@@ -2,16 +2,19 @@ extends CharacterBody2D
 
 signal died
 
+@export var max_health = 100
+var health
+
 const SPEED = 120.0
 const ATTACK_DAMAGE = 10
 const KNOCKBACK_DISTANCE = 160.0
 const KNOCKBACK_DURATION = 0.2
+var attack_range = 120.0
+
 
 var hit_effect_scene = preload("res://scenes/effects/hit_effect.tscn")
 var death_effect_scene = preload("res://scenes/effects/death_effect.tscn")
 
-@export var max_health = 100
-var health
 
 @onready var animated_sprite = $Orc
 @onready var hitbox_area = $Hitbox # Referência para a Area2D
@@ -25,7 +28,7 @@ enum State { IDLE, CHASING, ATTACKING, HURT, DEATH }
 var current_state = State.CHASING
 var is_attacking = false
 var can_attack = true
-var attack_range = 120.0
+
 
 func _ready():
 	health = max_health

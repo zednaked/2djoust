@@ -43,6 +43,3 @@ disabled = true
 [node name="Soldier" parent="." instance=ExtResource("2_4vw0s")]
 animation = &"Attack01"
 speed_scale = 1.8
-
-[node name="DashTrailTimer" type="Timer" parent="."]
-wait_time = 0.05
