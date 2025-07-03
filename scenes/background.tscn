@@ -53,26 +53,6 @@ region_rect = Rect2(391, 161, 115, 91)
 position = Vector2(1.93616, 18.9744)
 shape = SubResource("RectangleShape2D_vygmf")
 
-[node name="pedra14" type="StaticBody2D" parent="." groups=["navigation_geometry"]]
-y_sort_enabled = true
-position = Vector2(504, 134)
-scale = Vector2(0.2, 0.2)
-disable_mode = 1
-collision_layer = 2
-collision_mask = 32
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="pedra14"]
-y_sort_enabled = true
-texture_filter = 1
-texture = ExtResource("1_vw2l3")
-region_enabled = true
-region_rect = Rect2(391, 161, 115, 91)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pedra14"]
-position = Vector2(1.93616, 18.9744)
-shape = SubResource("RectangleShape2D_vygmf")
-
 [node name="pedra19" type="StaticBody2D" parent="." groups=["navigation_geometry"]]
 y_sort_enabled = true
 position = Vector2(100, 15)
@@ -153,26 +133,6 @@ region_rect = Rect2(391, 161, 115, 91)
 position = Vector2(1.93616, 18.9744)
 shape = SubResource("RectangleShape2D_vygmf")
 
-[node name="pedra23" type="StaticBody2D" parent="." groups=["navigation_geometry"]]
-y_sort_enabled = true
-position = Vector2(921, 574)
-scale = Vector2(0.2, 0.2)
-disable_mode = 1
-collision_layer = 2
-collision_mask = 32
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="pedra23"]
-y_sort_enabled = true
-texture_filter = 1
-texture = ExtResource("1_vw2l3")
-region_enabled = true
-region_rect = Rect2(391, 161, 115, 91)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pedra23"]
-position = Vector2(1.93616, 18.9744)
-shape = SubResource("RectangleShape2D_vygmf")
-
 [node name="pedra24" type="StaticBody2D" parent="." groups=["navigation_geometry"]]
 modulate = Color(0.788235, 0.713726, 0, 1)
 y_sort_enabled = true
@@ -191,48 +151,6 @@ region_enabled = true
 region_rect = Rect2(391, 161, 115, 91)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pedra24"]
-position = Vector2(1.93616, 18.9744)
-shape = SubResource("RectangleShape2D_vygmf")
-
-[node name="pedra25" type="StaticBody2D" parent="." groups=["navigation_geometry"]]
-modulate = Color(0.788235, 0.713726, 0, 1)
-y_sort_enabled = true
-position = Vector2(953, 260)
-scale = Vector2(0.2, 0.2)
-disable_mode = 1
-collision_layer = 2
-collision_mask = 32
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="pedra25"]
-y_sort_enabled = true
-texture_filter = 1
-texture = ExtResource("1_vw2l3")
-region_enabled = true
-region_rect = Rect2(391, 161, 115, 91)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pedra25"]
-position = Vector2(1.93616, 18.9744)
-shape = SubResource("RectangleShape2D_vygmf")
-
-[node name="pedra26" type="StaticBody2D" parent="." groups=["navigation_geometry"]]
-modulate = Color(0.788235, 0.713726, 0, 1)
-y_sort_enabled = true
-position = Vector2(1241, 155)
-scale = Vector2(0.2, 0.2)
-disable_mode = 1
-collision_layer = 2
-collision_mask = 32
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="pedra26"]
-y_sort_enabled = true
-texture_filter = 1
-texture = ExtResource("1_vw2l3")
-region_enabled = true
-region_rect = Rect2(391, 161, 115, 91)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pedra26"]
 position = Vector2(1.93616, 18.9744)
 shape = SubResource("RectangleShape2D_vygmf")
 
