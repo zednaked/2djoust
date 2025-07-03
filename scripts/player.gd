@@ -3,6 +3,7 @@ extends CharacterBody2D
 signal health_updated(current_health, max_health)
 signal player_died
 
+const TIMECOMBO = 1
 const SPEED = 280.0
 const DASH_SPEED = 700.0
 const DASH_DURATION = 0.40
@@ -53,7 +54,7 @@ func _physics_process(delta):
 			if Input.is_action_just_pressed("ui_select"):
 				start_attack()
 		
-		State.DASH:
+		State.DASH: #dash e ataque
 			handle_dashing(delta)
 			if Input.is_action_just_pressed("ui_select"):
 				start_attack()
@@ -66,11 +67,11 @@ func _physics_process(delta):
 	move_and_slide()
 	
 #arrasta a rapaise
-	for i in get_slide_collision_count():
+	for i in get_slide_collision_count(): # se no meio do slide da encontrao
 		var collision = get_slide_collision(i)
 		if collision and collision.get_collider().is_in_group("enemy"):
 			var enemy = collision.get_collider()
-			enemy.velocity = self.velocity
+			enemy.velocity = self.velocity #repassa a velocidade
 
 func handle_movement_input():
 	var direction_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -78,14 +79,14 @@ func handle_movement_input():
 		current_state = State.WALK
 		velocity = direction_vector * SPEED
 		animated_sprite.play("Walk")
-		animated_sprite.flip_h = direction_vector.x < 0
+		animated_sprite.flip_h = direction_vector.x < 0 #|#hack vira
 	else:
 		current_state = State.IDLE
 		velocity = Vector2.ZERO
 		animated_sprite.play("Idle")
 
-func handle_dash_input():
-	var current_time = Time.get_ticks_msec() / 1000.0
+func handle_dash_input(): #resolve apenas a parte de input do dash muda o state e animacao
+	var current_time = Time.get_ticks_msec() / 1000.0 #timer para combo
 	for dir_name in actions.keys():
 		var action = actions[dir_name]
 		if Input.is_action_just_pressed(action):
@@ -96,7 +97,7 @@ func handle_dash_input():
 				animated_sprite.play("Walk")
 			last_tap_time[dir_name] = current_time
 
-func handle_dashing(delta):
+func handle_dashing(delta): #aplica dash enquanto dashing 
 	velocity = dash_direction * DASH_SPEED
 	dash_timer -= delta
 	if dash_timer <= 0:
@@ -105,27 +106,37 @@ func handle_dashing(delta):
 func start_attack():
 	current_state = State.ATTACK
 	can_combo = false
-	if combo_reset_timer != null and combo_reset_timer.time_left > 0:
-		combo_reset_timer.disconnect("timeout", Callable(self, "reset_combo"))
-		combo_reset_timer = null
-
+	
 	combo_counter += 1
 	if combo_counter > 3:
 		combo_counter = 1
+
+	
+	if combo_reset_timer != null and combo_reset_timer.time_left == 0: 
+		combo_reset_timer.disconnect("timeout", Callable(self, "reset_combo")) 
+		combo_reset_timer = null
+		combo_counter = 1
+		
+	
+
+	
 	
 	var attack_animation = "Attack0" + str(combo_counter)
 	animated_sprite.play(attack_animation)
 	
 	var damage_delay = 0.3
-	await get_tree().create_timer(damage_delay).timeout
+	await get_tree().create_timer(damage_delay).timeout #cria um timmer  para dar um tempin
 	hitbox.set_deferred("disabled", false)
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.2).timeout #mais um tempinho
 	hitbox.set_deferred("disabled", true)
+	
+	
 
 func _on_animation_finished():
 	if animated_sprite.animation.begins_with("Attack"):
 		can_combo = true
-		combo_reset_timer = get_tree().create_timer(0.5)
+		combo_reset_timer = get_tree().create_timer(TIMECOMBO)
+		print_debug("combo time")
 		combo_reset_timer.connect("timeout", Callable(self, "reset_combo"))
 		if current_state == State.ATTACK:
 			current_state = State.IDLE

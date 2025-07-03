@@ -153,7 +153,7 @@ func take_damage(amount):
 			drop.global_position = self.global_position
 		elif rnd < 0.45:
 			drop = drop2.instantiate()
-			get_parent().add_child(drop)
+			get_parent().add_child(drop) #settar defferred bug
 			drop.global_position = self.global_position
 		elif rnd < 0.65:
 			drop = drop1.instantiate()
@@ -173,7 +173,7 @@ func take_damage(amount):
 		health_bar.visible = false # usar o mesmo que o inmigo
 		$CollisionShape2D.disabled = true
 		$Hurtbox/CollisionShape2D.disabled = true
-		hitbox_shape.disabled = true
+		hitbox_shape.disabled = true #set deff
 	else:
 		current_state = State.HURT
 		animated_sprite.play("hurt")
