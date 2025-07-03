@@ -1,4 +1,8 @@
 CollisionShape2D
+Area2D
+TextureRect
+PanelContainer
+Panel
 Sprite2D
 Button
 Timer
@@ -7,4 +11,3 @@ Node
 Node2D
 NavigationRegion2D
 XROrigin3D
-TextureRect

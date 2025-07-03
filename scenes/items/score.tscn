@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6yrhn8wv4kaf"]
+
+[ext_resource type="Texture2D" uid="uid://n0q2o0o0mxom" path="res://assets/sprites/score.png" id="1_su6cj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3i84f"]
+size = Vector2(22, 20)
+
+[node name="score" type="Sprite2D" groups=["pickup"]]
+texture_filter = 1
+position = Vector2(919, 226)
+texture = ExtResource("1_su6cj")
+metadata/_edit_group_ = true
+
+[node name="score" type="Area2D" parent="." groups=["pickup"]]
+collision_layer = 16
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="score" groups=["pickup"]]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_3i84f")

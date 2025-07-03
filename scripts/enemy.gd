@@ -3,7 +3,9 @@ extends CharacterBody2D
 signal died
 
 @export var max_health = 100
-@export var drop : PackedScene
+@export var drop1 : PackedScene
+@export var drop2 : PackedScene
+@export var drop3 : PackedScene
 var health
 
 const SPEED = 120.0
@@ -143,13 +145,23 @@ func take_damage(amount):
 	
 	if health <= 0:
 		died.emit()
-		
-		
-		if randf() < 0.5:
-			var drop = drop.instantiate()
+		var drop
+		var rnd = randf()
+		if rnd < 0.35:
+			drop = drop3.instantiate()
+			get_parent().add_child(drop)
+			drop.global_position = self.global_position
+		elif rnd < 0.45:
+			drop = drop2.instantiate()
+			get_parent().add_child(drop)
+			drop.global_position = self.global_position
+		elif rnd < 0.65:
+			drop = drop1.instantiate()
 			get_parent().add_child(drop)
 			drop.global_position = self.global_position
 		
+		
+
 		var death_effect = death_effect_scene.instantiate()
 		
 		get_parent().add_child(death_effect)

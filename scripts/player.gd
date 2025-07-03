@@ -166,10 +166,16 @@ func heal(amount):
 func _on_Hurtbox_area_entered(area):
 	if area.is_in_group("pickup"):
 		
-		if area.name == "HealthPack":
-			print_debug("pickup")
+			
+		if area.name == "dano":
+			
+			area.get_parent().queue_free()
+		if area.name == "vida":
 			heal(HEAL_AMOUNT)
-			area.queue_free()
+			area.get_parent().queue_free()
+		if area.name == "score":
+			
+			area.get_parent().queue_free()
 
 func get_max_health():
 	return max_health

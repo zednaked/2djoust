@@ -28,6 +28,7 @@ enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
 [global_group]
 
 spawners=""
+pickup=""
 
 [input]
 

@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8hfjmvwb01gh"]
+[gd_scene load_steps=10 format=3 uid="uid://b8hfjmvwb01gh"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_abcde"]
 [ext_resource type="PackedScene" uid="uid://bt06b4dg3cd3b" path="res://assets/sprites/Orc.aseprite" id="2_fghij"]
-[ext_resource type="PackedScene" uid="uid://cbba87654321" path="res://scenes/items/health_pack.tscn" id="2_qtqhn"]
+[ext_resource type="PackedScene" uid="uid://qt07kp00bv6k" path="res://scenes/items/dano.tscn" id="2_ij3aw"]
+[ext_resource type="PackedScene" uid="uid://c6yrhn8wv4kaf" path="res://scenes/items/score.tscn" id="2_tgsyh"]
+[ext_resource type="PackedScene" uid="uid://4ttrncyq2bu1" path="res://scenes/items/vida.tscn" id="3_nh16e"]
 [ext_resource type="PackedScene" uid="uid://klmno123456" path="res://scenes/components/enemy_health_bar.tscn" id="3_xyz"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67890"]
@@ -21,7 +23,9 @@ collision_mask = 7
 platform_floor_layers = 4294967293
 platform_wall_layers = 2
 script = ExtResource("1_abcde")
-drop = ExtResource("2_qtqhn")
+drop1 = ExtResource("2_ij3aw")
+drop2 = ExtResource("2_tgsyh")
+drop3 = ExtResource("3_nh16e")
 
 [node name="Orc" parent="." instance=ExtResource("2_fghij")]
 animation = &"idle"
